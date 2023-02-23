@@ -6,25 +6,17 @@ const numberBtns = document.querySelectorAll(".number");
 const previousNumDisplay = document.querySelector(".previous");
 const currentNumDisplay = document.querySelector(".current");
 const operatorBtns = document.querySelectorAll(".operator");
-const equal = document.querySelector(".equal");
-const clear = document.querySelector(".clear");
+const equalBtn = document.querySelector(".equal");
+const clearBtn = document.querySelector(".clear");
+const deleteBtn = document.querySelector(".delete");
 
-numberBtns.forEach((num) =>
-  num.addEventListener("click", (e) => inputNumber(e.target.textContent))
-);
-
-equal.addEventListener("click", () => {
-  calculate();
-  updateDisplay();
-});
-
+//functions
 function updateDisplay() {
   currentNumDisplay.textContent = currentNum;
   if (operator !== undefined) {
     previousNumDisplay.textContent = `${previousNum} ${operator}`;
   } else {
     previousNumDisplay.textContent = "";
-    currentNum = "";
   }
 }
 
@@ -41,10 +33,19 @@ function calculate() {
   } else if (operator === "*") {
     result = firstOperand * secondOperand;
   } else if (operator === "/") {
-    result = firstOperand / secondOperand;
+    if (secondOperand === 0) {
+      result = "Error, devided by 0";
+    } else {
+      result = firstOperand / secondOperand;
+    }
   } else return;
 
-  currentNum = result;
+  if (!isNaN(result)) {
+    currentNum = Math.round(result * 10000) / 10000;
+  } else {
+    //display error text
+    currentNum = result;
+  }
   operator = undefined;
   previousNum = "";
 }
@@ -58,9 +59,6 @@ function inputNumber(number) {
     previousNumDisplay.textContent = "";
   }
 }
-operatorBtns.forEach((op) =>
-  op.addEventListener("click", (e) => onOperatorClicked(e.target.textContent))
-);
 
 function onOperatorClicked(op) {
   if (currentNum === "") return;
@@ -71,12 +69,59 @@ function onOperatorClicked(op) {
   previousNum = currentNum;
   currentNum = "";
 }
-
-clear.addEventListener("click", clearDisplay);
-
-function clearDisplay() {
+function clearScreen() {
   currentNum = "";
   previousNum = "";
   operator = undefined;
-  updateDisplay();
 }
+
+function deleteLastNum() {
+  currentNum = currentNum.toString().slice(0, -1);
+}
+
+function handleKeyPress(e) {
+  e.preventDefault();
+  if ((e.key >= 0 && e.key <= 9) || e.key === ".") {
+    inputNumber(e.key);
+  }
+  if (e.key === "Enter" || e.key === "=") {
+    calculate();
+    updateDisplay()
+  }
+  if (e.key === "+" || e.key === "-" || e.key ==='*' || e.key === "/") {
+    onOperatorClicked(e.key);
+  }
+  if (e.key === "Backspace") {
+    deleteLastNum();
+    updateDisplay()
+  }
+  if(e.key === "Escape"){
+    clearScreen()
+    updateDisplay()
+  }
+}
+
+//Event listeners
+numberBtns.forEach((num) =>
+  num.addEventListener("click", (e) => inputNumber(e.target.textContent))
+);
+
+operatorBtns.forEach((op) =>
+  op.addEventListener("click", (e) => onOperatorClicked(e.target.textContent))
+);
+equalBtn.addEventListener("click", () => {
+  calculate();
+  updateDisplay();
+});
+
+clearBtn.addEventListener("click", () => {
+  clearScreen();
+  updateDisplay();
+});
+
+deleteBtn.addEventListener("click", () => {
+  deleteLastNum();
+  updateDisplay();
+});
+
+window.addEventListener("keydown", handleKeyPress);
