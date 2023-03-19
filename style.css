@@ -14,8 +14,8 @@ body {
   justify-content: center;
   align-content: center;
   gap: 10px;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+  grid-template-columns: repeat(4, minmax(auto, 100px));
+  grid-template-rows: repeat(6, 80px);
   background: linear-gradient(to top, hsl(208, 87%, 12%), hsl(208, 78%, 21%));
  border-radius: 10px;
   box-shadow: 0 0 20px 5px rgba(45, 43, 43, 70%);
@@ -28,7 +28,7 @@ body {
   align-items: center;
   color: hsl(225, 20%, 84%);
   box-shadow: 2px 2px 5px 0 hsl(0deg 0% 0% / 75%);
-  border-radius: 3px 3px 7px 7px;
+  border-radius: 5px;
   font-size: xx-large;
   background: linear-gradient(to top, hsl(208, 88%, 16%), hsl(208, 88%, 21%));
 }
@@ -84,6 +84,7 @@ body {
 
 .delete{
     background: rgba(245, 56, 56, 0.7);
+    
 }
 .delete:hover{
     background: rgba(245, 56, 56, 0.9); 
