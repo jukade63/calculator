@@ -1,14 +1,17 @@
-*{
-    font-family: Helvetica, sans-serif;
+* {
+  font-family: Helvetica, sans-serif;
 }
 body {
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #00bcd4, #ffeb3b);
 }
 
 .container {
   max-width: 450px;
-  margin: 30px auto;
   padding: 30px 15px 30px 15px;
   display: grid;
   justify-content: center;
@@ -17,7 +20,7 @@ body {
   grid-template-columns: repeat(4, minmax(auto, 100px));
   grid-template-rows: repeat(6, 80px);
   background: linear-gradient(to top, hsl(208, 87%, 12%), hsl(208, 78%, 21%));
- border-radius: 10px;
+  border-radius: 10px;
   box-shadow: 0 0 20px 5px rgba(45, 43, 43, 70%);
 }
 
@@ -33,17 +36,17 @@ body {
   background: linear-gradient(to top, hsl(208, 88%, 16%), hsl(208, 88%, 21%));
 }
 
-.operator, .equal{
-    background: linear-gradient(to top, hsl(221, 14%, 50%), hsl(221, 14%, 60%));
+.operator,
+.equal {
+  background: linear-gradient(to top, hsl(221, 14%, 50%), hsl(221, 14%, 60%));
 }
 
-
-.number:hover{
-    background:  hsl(208, 88%, 29%);
+.number:hover {
+  background: hsl(208, 88%, 29%);
 }
-.operator:hover, .equal:hover{
-    background: hsl(221, 14%, 65%);
-
+.operator:hover,
+.equal:hover {
+  background: hsl(221, 14%, 65%);
 }
 
 .display {
@@ -60,13 +63,13 @@ body {
   color: black;
 }
 
-.current{
-    font-size: xx-large;
-    font-weight: 600;
+.current {
+  font-size: xx-large;
+  font-weight: 600;
 }
 
-.previous{
-    font-size: large;
+.previous {
+  font-size: large;
 }
 
 .clear {
@@ -74,18 +77,17 @@ body {
   background: rgba(7, 149, 201, 0.6);
 }
 
-.clear:hover{
-    background: rgba(7, 149, 201, 0.8);
+.clear:hover {
+  background: rgba(7, 149, 201, 0.8);
 }
 
 .equal {
   grid-column: span 2;
 }
 
-.delete{
-    background: rgba(245, 56, 56, 0.7);
-    
+.delete {
+  background: rgba(245, 56, 56, 0.7);
 }
-.delete:hover{
-    background: rgba(245, 56, 56, 0.9); 
+.delete:hover {
+  background: rgba(245, 56, 56, 0.9);
 }
