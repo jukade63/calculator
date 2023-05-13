@@ -2,8 +2,7 @@
   font-family: Helvetica, sans-serif;
 }
 body {
-  padding: 0;
-  margin: 0;
+  padding: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,13 +11,13 @@ body {
 
 .container {
   max-width: 450px;
-  padding: 30px 15px 30px 15px;
+  padding: 20px;
   display: grid;
   justify-content: center;
   align-content: center;
   gap: 10px;
-  grid-template-columns: repeat(4, minmax(auto, 100px));
-  grid-template-rows: repeat(6, 80px);
+  grid-template-columns: repeat(4, minmax(auto, 60px));
+  grid-template-rows: repeat(6, 60px);
   background: linear-gradient(to top, hsl(208, 87%, 12%), hsl(208, 78%, 21%));
   border-radius: 10px;
   box-shadow: 0 0 20px 5px rgba(45, 43, 43, 70%);
@@ -32,7 +31,7 @@ body {
   color: hsl(225, 20%, 84%);
   box-shadow: 2px 2px 5px 0 hsl(0deg 0% 0% / 75%);
   border-radius: 5px;
-  font-size: xx-large;
+  font-size: 25px;
   background: linear-gradient(to top, hsl(208, 88%, 16%), hsl(208, 88%, 21%));
 }
 
@@ -52,6 +51,7 @@ body {
 .display {
   grid-column: 1 / -1;
   display: flex;
+  height: 40px;
   flex-direction: column;
   align-items: flex-end;
   padding: 10px;
@@ -64,12 +64,12 @@ body {
 }
 
 .current {
-  font-size: xx-large;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .previous {
-  font-size: large;
+  font-size: 12px;
 }
 
 .clear {
